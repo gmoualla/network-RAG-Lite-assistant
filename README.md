@@ -8,6 +8,12 @@ A simple **grounded AI assistant** that answers networking questions based **onl
 User Question → Keyword Search → Retrieve Relevant Chunk → Grounded Prompt → Gemini API → Evaluation → Grounded Answer
 ```
 
+### ❓ Why "Enhanced RAG"?
+The Basic version sends *all* notes to the AI, which works for small files but fails for larger knowledge bases (context window limits). This **Enhanced Version** solves that by:
+1.  **Saving Costs & Tokens:** Only sends the specific section relevant to your question.
+2.  **Improving Accuracy:** Prevents the AI from getting confused by irrelevant information.
+3.  **Verifying Grounding:** Automatically checks if the AI actually found the answer in the notes or had to guess.
+
 
 
 ## 📁 Project Structure
@@ -91,7 +97,7 @@ The provided notes do not contain information about this topic.
 [Evaluation]: ❌ Not Found in Notes
 ```
 
-## 🔧 How It Works
+
 
 ## 🔧 How It Works
 
