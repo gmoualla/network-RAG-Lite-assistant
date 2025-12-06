@@ -66,7 +66,21 @@ network-notes-assistant/
    python assistant.py
    ```
 
-## 💡 Usage Examples
+## � Switching Versions
+
+This repository contains two versions of the assistant. You can switch between them using likely git commands:
+
+- **Basic Version (Simple)**
+  ```bash
+  git checkout master
+  ```
+
+- **Enhanced RAG Version (Current)**
+  ```bash
+  git checkout enhanced-rag
+  ```
+
+## �💡 Usage Examples
 
 ### Example 1: Question Answered from Notes
 ```
