@@ -1,23 +1,3 @@
-"""
-Network Notes Assistant - Intermediate Version
-Demonstrates "RAG-Lite" with keyword interactions and simple response evaluation.
-"""
-
-from google import genai
-import re
-
-# Initialize the Gemini client (uses GEMINI_API_KEY environment variable)
-client = genai.Client()
-
-def load_notes_chunks(notes_path="notes/network_notes.txt"):
-    """
-    Load notes and split them into logical chunks based on Markdown headers.
-    Returns a dictionary: {header: content}
-    """
-    try:
-        with open(notes_path, 'r', encoding='utf-8') as f:
-            text = f.read()
-    except FileNotFoundError:
         print(f"Error: Notes file not found at {notes_path}")
         return None
 
