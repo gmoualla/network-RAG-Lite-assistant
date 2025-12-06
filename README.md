@@ -36,7 +36,7 @@ network-notes-assistant/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/network-notes-assistant.git
+   git clone https://github.com/YOUR_USERNAME/network-RAG-Lite-assistant.git
    cd network-notes-assistant
    ```
 
