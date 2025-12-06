@@ -1,13 +1,11 @@
-# 🌐 Network Notes Assistant (RAG-Lite)
+# 🌐 Network RAG-Based Assistant (Enhanced RAG)
 
-A simple **grounded AI assistant** that answers networking questions based **only** on provided notes — demonstrating RAG (Retrieval-Augmented Generation) principles, hallucination prevention, and prompt engineering.
-
-
+A simple **grounded AI assistant** that answers networking questions based **only** on provided notes, demonstrating RAG (Retrieval-Augmented Generation) principles, hallucination prevention, and prompt engineering.
 
 ## 🏗️ Architecture
 
 ```
-User Question → Load Notes → Create Grounded Prompt → Gemini API → Grounded Answer
+User Question → Keyword Search → Retrieve Relevant Chunk → Grounded Prompt → Gemini API → Evaluation → Grounded Answer
 ```
 
 
@@ -36,8 +34,8 @@ network-notes-assistant/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/network-notes-assistant.git
-   cd network-notes-assistant
+   git clone https://github.com/gmoualla/network-RAG-Lite-assistant.git
+   cd network-RAG-Lite-assistant
    ```
 
 2. **Install dependencies**
@@ -68,38 +66,46 @@ network-notes-assistant/
 ```
 Enter your question: What is the difference between TCP and UDP?
 
+Searching notes...
+
+[Debug] Retrieved sections: ['TCP vs UDP']
+
 Answer:
 TCP (Transmission Control Protocol) is connection-oriented and guarantees 
 delivery of packets in correct order using a three-way handshake. It's slower 
-but more reliable, with error checking and acknowledgment mechanisms. It's used 
-for web browsing, email, and file transfer.
+but more reliable. UDP (User Datagram Protocol) is connectionless with no 
+guarantee of delivery. It's faster but less reliable.
 
-UDP (User Datagram Protocol) is connectionless with no guarantee of delivery 
-or order. It's faster with lower overhead but has no error recovery. It's used 
-for streaming video, online gaming, DNS queries, and VoIP.
+[Evaluation]: ✅ Grounded Answer
 ```
 
 ### Example 2: Question NOT in Notes
 ```
 Enter your question: How does IPSec work?
 
+Searching notes...
+
 Answer:
 The provided notes do not contain information about this topic.
+
+[Evaluation]: ❌ Not Found in Notes
 ```
 
 ## 🔧 How It Works
 
-### 1. **Load Notes**
-The assistant reads `network_notes.txt` containing networking fundamentals.
+## 🔧 How It Works
 
-### 2. **Grounded Prompting**
-Creates a special prompt that:
-- Provides the full notes as context
-- Instructs the model to ONLY use the notes
-- Specifies what to say if information is missing
+### 1. **Smart Chunking**
+The assistant loads `network_notes.txt` and intelligently splits it into logical sections based on headers (e.g., `## OSI Model`, `## TCP vs UDP`).
 
-### 3. **Low Temperature**
-Uses `temperature=0.1` for more factual, consistent responses.
+### 2. **Keyword Search (Retrieval)**
+When you ask a question, the system scans the sections to find the most relevant one using keyword matching. This reduces token usage and "distracts" the model less.
+
+### 3. **Grounded Prompting**
+Creates a prompt involving **only** the retrieved text section.
+
+### 4. **Response Evaluation**
+The system automatically checks the answer. If the model says "The provided notes do not contain information...", it flags the result as **Not Found**. Otherwise, it's marked as **✅ Grounded**.
 
 
 ## 🤝 Contributing
