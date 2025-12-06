@@ -1,4 +1,4 @@
-# 🌐 Network Notes Assistant (RAG-Lite)
+# 🌐 Network RAG-Based Assistant
 
 A simple **grounded AI assistant** that answers networking questions based **only** on provided notes — demonstrating RAG (Retrieval-Augmented Generation) principles, hallucination prevention, and prompt engineering.
 
