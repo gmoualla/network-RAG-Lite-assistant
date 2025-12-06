@@ -1,0 +1,174 @@
+# Network Fundamentals Notes
+
+## OSI Model Layers
+
+The OSI (Open Systems Interconnection) model has 7 layers:
+
+Layer 1: Physical Layer
+- Deals with physical connections and raw bit transmission
+- Includes cables, switches, network interface cards
+- Transmits data as electrical signals, light pulses, or radio waves
+
+Layer 2: Data Link Layer
+- Handles MAC addresses and frame transmission
+- Provides error detection and correction
+- Examples: Ethernet, Wi-Fi (802.11)
+
+Layer 3: Network Layer
+- Manages IP addressing and routing
+- Determines best path for data packets
+- Examples: IP, ICMP, routers
+
+Layer 4: Transport Layer
+- Manages end-to-end communication
+- Handles segmentation and reassembly
+- Examples: TCP, UDP
+
+Layer 5: Session Layer
+- Manages sessions between applications
+- Handles connection establishment and termination
+
+Layer 6: Presentation Layer
+- Data formatting and encryption
+- Handles data translation and compression
+
+Layer 7: Application Layer
+- User-facing protocols
+- Examples: HTTP, FTP, SMTP, DNS
+
+## TCP vs UDP
+
+TCP (Transmission Control Protocol):
+- Connection-oriented protocol
+- Guarantees delivery of packets in correct order
+- Uses three-way handshake to establish connection
+- Slower but more reliable
+- Used for: web browsing (HTTP/HTTPS), email (SMTP), file transfer (FTP)
+- Has error checking and acknowledgment mechanisms
+
+UDP (User Datagram Protocol):
+- Connectionless protocol
+- No guarantee of delivery or order
+- Faster than TCP
+- Lower overhead
+- Used for: streaming video, online gaming, DNS queries, VoIP
+- No error recovery - lost packets are not retransmitted
+
+## IP Addressing
+
+IPv4:
+- 32-bit address format
+- Written as four octets (e.g., 192.168.1.1)
+- Approximately 4.3 billion unique addresses
+- Classes: A, B, C, D, E
+
+IPv6:
+- 128-bit address format
+- Written in hexadecimal (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334)
+- Virtually unlimited addresses
+- Designed to replace IPv4
+
+Private IP Ranges:
+- Class A: 10.0.0.0 to 10.255.255.255
+- Class B: 172.16.0.0 to 172.31.255.255
+- Class C: 192.168.0.0 to 192.168.255.255
+
+## Subnetting
+
+Subnet Mask:
+- Divides IP address into network and host portions
+- Common masks: 255.255.255.0 (/24), 255.255.0.0 (/16)
+- CIDR notation: Uses /XX to indicate number of network bits
+
+Example:
+- IP: 192.168.1.100
+- Mask: 255.255.255.0 (/24)
+- Network: 192.168.1.0
+- Usable hosts: 254 (192.168.1.1 to 192.168.1.254)
+
+## Routing Basics
+
+Static Routing:
+- Manually configured routes
+- Does not adapt to network changes
+- Used in small, stable networks
+
+Dynamic Routing:
+- Routes automatically discovered and updated
+- Adapts to network topology changes
+- Protocols: RIP, OSPF, EIGRP, BGP
+
+Default Gateway:
+- Router that forwards traffic to destinations outside local network
+- Usually the first or last IP in subnet range
+
+## Firewalls
+
+Purpose:
+- Controls incoming and outgoing network traffic
+- Acts as barrier between trusted and untrusted networks
+- Enforces security policies
+
+Types:
+- Packet Filtering: Examines packet headers
+- Stateful Inspection: Tracks connection states
+- Application Layer: Deep packet inspection
+- Next-Generation: Combines multiple security features
+
+Common Rules:
+- Allow/deny based on source/destination IP
+- Allow/deny based on port numbers
+- Allow/deny based on protocols
+
+## Common Ports
+
+Well-Known Ports (0-1023):
+- HTTP: 80
+- HTTPS: 443
+- FTP: 20, 21
+- SSH: 22
+- Telnet: 23
+- SMTP: 25
+- DNS: 53
+- DHCP: 67, 68
+- POP3: 110
+- IMAP: 143
+
+## DNS (Domain Name System)
+
+Purpose:
+- Translates domain names to IP addresses
+- Hierarchical distributed database
+
+DNS Record Types:
+- A Record: Maps domain to IPv4 address
+- AAAA Record: Maps domain to IPv6 address
+- CNAME: Alias for another domain
+- MX: Mail exchange server
+- NS: Name server records
+- TXT: Text information
+
+## DHCP (Dynamic Host Configuration Protocol)
+
+Purpose:
+- Automatically assigns IP addresses to devices
+- Provides subnet mask, default gateway, DNS servers
+
+DHCP Process (DORA):
+1. Discover: Client broadcasts request
+2. Offer: Server offers IP address
+3. Request: Client requests offered IP
+4. Acknowledge: Server confirms assignment
+
+## VLANs (Virtual Local Area Networks)
+
+Purpose:
+- Logically segments network without physical separation
+- Improves security and reduces broadcast traffic
+- Allows grouping devices by function rather than location
+
+Benefits:
+- Better security through isolation
+- Reduced broadcast domains
+- Easier network management
+- Cost-effective compared to physical segmentation
